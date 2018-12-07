@@ -1,8 +1,9 @@
 .nav-top
   .container-fluid
     .navbar-header.clearfix
-      a.navbar-brand(href="/") 电影
+      a.navbar-brand(href="/") 食谱
       a.navbar-brand(href="/musicIndex") 音乐
+      a.navbar-brand(href="/") 饮食资讯
     if user
       p.navbar-text.navbar-right
         a: span 欢迎您:#{user.name}
@@ -74,17 +75,18 @@
   .nav-wrap.clearfix
     .nav-logo
       if logo == 'movie'
-        - var logoName = '电影'
-        a(href="/")
-          img(src="/libs/images/#{logo}/#{logo}Logo.png" alt="#{logo}Logo" style="width:115px;height:27px;")
-      else
-        - var logoName = '音乐'
-        a(href="/musicIndex")
-          img(src="/libs/images/#{logo}/#{logo}Logo.png" alt="#{logo}Logo" style="width:115px;height:27px;")
+        //- - var logoName = '电影'
+        a(href="/")菜谱
+          //- img(src="/libs/images/#{logo}/#{logo}Logo.png" alt="#{logo}Logo" style="width:115px;height:27px;")
+      - else
+        //- - var logoName = '音乐'
+        a(href="/musicIndex") 音乐
+          //- img(src="/libs/images/#{logo}/#{logo}Logo.png" alt="#{logo}Logo" style="width:115px;height:27px;")
     .nav-search
       form(method='GET' action='/#{logo}/results')
         .input-group
-          input.form-control(type='text' name='q' placeholder="#{logoName}搜索")
+          //- input.form-control(type='text' name='q' placeholder="#{logoName}搜索")
+          input.form-control(type='text' name='q' placeholder="菜谱搜索")
           span.input-group-btn
             button(type='submit').btn.btn-default
               span.glyphicon.glyphicon-search
