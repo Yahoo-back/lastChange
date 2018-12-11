@@ -8,9 +8,11 @@
   width: auto;
 }
 
+/** 头部导航栏背景色 */
+
 .nav-top {
-  /* background-color: #545652; */
-  background-color: #9c25ec;
+  /* background-color: #ba66f3; */
+  background-color: #b607b3;
   height: 50px;
 }
 
@@ -21,6 +23,8 @@
 .nav-top .navbar-text {
   margin-top: 10px;
 }
+
+/** 导航栏字 */
 
 .nav-top a {
   color: #fff;
@@ -50,14 +54,16 @@
   width: 440px;
 }
 
+/** 注册登录表单背景色 */
+
 .sign-form .modal-content {
-  background-color: #5a5a5a;
-  color: #aaa;
+  background-color: #f0f3f5;
+  color: grey;
 }
 
 .sign-form .modal-header {
   font-size: 18px;
-  color: #fff;
+  color: #000;
 }
 
 .sign-form .form-group {
