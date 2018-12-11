@@ -3,6 +3,7 @@
     .navbar-header.clearfix
       a.navbar-brand(href="/") 电影
       a.navbar-brand(href="/musicIndex") 音乐
+      a.navbar-brand(href="/recipesIndex") 一日三餐
     if user
       p.navbar-text.navbar-right
         a: span 欢迎您:#{user.name}
@@ -44,11 +45,11 @@
         .modal-footer
           button.btn.btn-default(type="button" data-dismiss="modal") 关闭
           button.btn.btn-success(type="submit") 注册
-#signinModal.modal.fade(role="dialog" aria-labelledby="登录豆瓣电影" tabindex="-1")
+#signinModal.modal.fade(role="dialog" aria-labelledby="登录" tabindex="-1")
   .modal-dialog.sign-form
     .modal-content
       form#signinForm(method="GET" action="/user/signin")
-        .modal-header 登录豆瓣电影
+        .modal-header 登录
         .modal-body.clearfix
           .form-group.clearfix
             label(for="signinName") 用户名
@@ -77,10 +78,14 @@
         - var logoName = '电影'
         a(href="/")
           img(src="/libs/images/#{logo}/#{logo}Logo.png" alt="#{logo}Logo" style="width:115px;height:27px;")
-      else
+      if logo == "music"
         - var logoName = '音乐'
         a(href="/musicIndex")
           img(src="/libs/images/#{logo}/#{logo}Logo.png" alt="#{logo}Logo" style="width:115px;height:27px;")
+      if logo == "recipes"
+       - var logoName = '菜谱'
+        a(href="/recipesIndex")
+
     .nav-search
       form(method='GET' action='/#{logo}/results')
         .input-group
@@ -98,6 +103,8 @@
         if logo == 'movie'
           li: a(href="/admin/movie/city/new" target="_blank") 电影院录入页
           li: a(href="/admin/movie/city/list" target="_blank") 电影院列表页
-        else
+        if logo == 'music'
           li: a(href="/admin/music/programme/list" target="_blank") 热门榜单列表页
-        li: a(href="/admin/user/list" target="_blank") 用户列表页
+          li: a(href="/admin/user/list" target="_blank") 用户列表页
+
+        
