@@ -13,6 +13,7 @@ var express = require('express'), // 加载express模块
   port = process.env.PORT || 3000, // 设置监听端口
   app = express(), // 生成Web服务器实例
   dbUrl = 'mongodb://127.0.0.1/douban'; // 连接本地数据库及数据库名称
+var engines = require('consolidate');
 
 mongoose.connect(dbUrl);
 
@@ -38,8 +39,26 @@ var walk = function(path) {
 walk(models_path);
 
 app.set('views', './app/views/pages'); // 视图文件根目录
+// app.set('view engine', 'jade'); // 设置jade模板引擎
+
+/* 设置html和jade共用模板引擎 */
+app.engine('jade', engines.jade);
+app.engine('html', engines.ejs);
 app.set('view engine', 'jade'); // 设置模板引擎
-/* 设置html模板引擎 */
+// app.set('view engine', 'html'); // 设置模板引擎
+// var partials = require('express-partials');
+// app.use(partials);
+
+// // view engine setup
+// app.set('views', path.join(__dirname, 'views')); //设置views文件夹为存放视图文件的目录，dirname为全局变量，存储当前正在执行的脚本所在的目录
+// //设置视图模板引擎为jsx，从而引入react
+
+// var options = {
+//   //jsx engine相关设置
+//   beautify: true //美化代码
+// };
+// app.engine('jsx', require('express-react-views').createEngine(options));
+// app.set('view engine', 'jsx');
 
 app.use(express.static(path.join(__dirname, 'public'))); // 设置静态文件目录
 app.locals.moment = require('moment');

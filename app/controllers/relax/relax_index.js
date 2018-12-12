@@ -3,10 +3,10 @@
 /* 与首页进行交互 */
 var mongoose = require('mongoose');
 
-/* 菜谱首页控制器 */
+/* 休闲时光控制器 */
 exports.index = function(req, res) {
-  res.render('recipes/recipes_index', {
-    title: '菜谱首页',
-    logo: 'recipes'
+  res.render('relax/relax_index', {
+    title: '休闲时光',
+    logo: 'relax'
   });
 };

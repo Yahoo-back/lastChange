@@ -3,7 +3,7 @@
 var MovieIndex = require('../app/controllers/movie/movie_index'), // 电影首页控制器
   // 电影首页模块路由控制器
   User = require('../app/controllers/user/user'), // 用户模块路由控制器
-  Movie = require('../app/controllers/movie/movie'), // 电影模块路由控制器
+  Movie = require('../app/controllers/movie/movie'), // 电影录入模块路由控制器
   MovieComment = require('../app/controllers/movie/movie_comment'), // 电影评论控制器
   Category = require('../app/controllers/movie/movie_category'), // 电影分类控制器
   City = require('../app/controllers/movie/movie_city'), // 电影院分类控制器
@@ -16,8 +16,21 @@ var MovieIndex = require('../app/controllers/movie/movie_index'), // 电影首�
   Programmer = require('../app/controllers/music/music_programme'),
   MusicComment = require('../app/controllers/music/music_comment'), // 音乐评论控制器
   /* 菜谱首页模板路由控制器 */
-
   RecipesIndex = require('../app/controllers/recipes/recipes_index'),
+  // 菜谱录入模块路由控制器
+  Recipes = require('../app/controllers/recipes/recipes'),
+  // 菜谱分类控制器
+  RecipesCategory = require('../app/controllers/recipes/recipes_category'),
+  /* 休闲时光模板路由控制器 */
+  RelaxIndex = require('../app/controllers/relax/relax_index'),
+  /* 美食专栏模板路由控制器 */
+  FoodIntroIndex = require('../app/controllers/foodIntro/foodIntro_index'),
+  /* 一日三餐模板路由控制器 */
+  ThreeMealsIndex = require('../app/controllers/threeMeals/threeMeals_index'),
+  /* 健康资讯模板路由控制器 */
+  HealthyNewsIndex = require('../app/controllers/healthyNews/healthyNews_index'),
+  /* 个人中心模板路由控制器 */
+  PersonalIndex = require('../app/controllers/personal/personal_index'),
   multipart = require('connect-multiparty'), // 处理文件上传中间件
   multipartMiddleware = multipart();
 
@@ -53,7 +66,7 @@ module.exports = function(app) {
 		电影网站路由
 	*/
   // 电影主页路由
-  app.get('/', MovieIndex.index);
+  app.get('/movieIndex', MovieIndex.index);
 
   // 首页电影搜索结果页
   app.get('/movie/results', MovieIndex.search);
@@ -165,6 +178,26 @@ module.exports = function(app) {
     .get(User.signinRequired, User.adminRequired, Programmer.list)
     .delete(Programmer.del);
 
-  /* 菜谱 */
-  app.get('/recipesIndex', RecipesIndex.index);
+  /* 菜谱首页 */
+  app.get('/', RecipesIndex.index);
+  //菜谱录入路由
+  app.route('/admin/recipes/new').get(User.signinRequired, User.adminRequired, Recipes.new);
+  // .post(User.signinRequired, User.adminRequired, Category.save);
+
+  // 菜谱列表路由
+  app.route('/admin/recipes/list').get(User.signinRequired, User.adminRequired, Recipes.list);
+
+  // 菜谱分类录入路由
+  app.route('/admin/recipes/recipesCategory/new').get(User.signinRequired, User.adminRequired, RecipesCategory.new);
+
+  /* 一日三餐 */
+  app.get('/threeMeals', ThreeMealsIndex.index);
+  /* 休闲时光 */
+  app.get('/relax', RelaxIndex.index);
+  /* 美食专栏 */
+  app.get('/foodIntro', FoodIntroIndex.index);
+  /* 健康资讯 */
+  app.get('/healthyNews', HealthyNewsIndex.index);
+  /* 个人中心 */
+  app.get('/personal', PersonalIndex.index);
 };

@@ -1,9 +1,14 @@
 .nav-top
   .container-fluid
     .navbar-header.clearfix
-      a.navbar-brand(href="/") 电影
+      a.navbar-brand(href="/") 首页
+      a.navbar-brand(href="/threeMeals") 一日三餐
+      a.navbar-brand(href="/relax") 休闲时光
+      a.navbar-brand(href="/foodIntro") 美食专栏
+      a.navbar-brand(href="/healthyNews") 健康资讯
+      a.navbar-brand(href="/personal") 个人中心
+      a.navbar-brand(href="/movieIndex") 电影
       a.navbar-brand(href="/musicIndex") 音乐
-      a.navbar-brand(href="/recipesIndex") 一日三餐
     if user
       p.navbar-text.navbar-right
         a: span 欢迎您:#{user.name}
@@ -76,7 +81,7 @@
     .nav-logo
       if logo == 'movie'
         - var logoName = '电影'
-        a(href="/")
+        a(href="/movieIndex")
           img(src="/libs/images/#{logo}/#{logo}Logo.png" alt="#{logo}Logo" style="width:115px;height:27px;")
       if logo == "music"
         - var logoName = '音乐'
@@ -84,8 +89,23 @@
           img(src="/libs/images/#{logo}/#{logo}Logo.png" alt="#{logo}Logo" style="width:115px;height:27px;")
       if logo == "recipes"
        - var logoName = '菜谱'
-        a(href="/recipesIndex")
-
+        a(href="/")
+      if logo == "threeMeals"
+       - var logoName = '一日三餐'
+        a(href="/threeMeals")
+      if logo == "relax"
+       - var logoName = '休闲时光'
+        a(href="/relax")
+      if logo == "foodIntro"
+       - var logoName = '美食专栏'
+        a(href="/foodIntro")
+      if logo == "healthyNews"
+       - var logoName = '健康资讯'
+        a(href="/healthyNews")
+      if logo == "personal"
+       - var logoName = '个人中心'
+        a(href="/personal")
+    if logoName != "个人中心"
     .nav-search
       form(method='GET' action='/#{logo}/results')
         .input-group
@@ -103,8 +123,21 @@
         if logo == 'movie'
           li: a(href="/admin/movie/city/new" target="_blank") 电影院录入页
           li: a(href="/admin/movie/city/list" target="_blank") 电影院列表页
+          li: a(href="/admin/user/list" target="_blank") 用户列表页
         if logo == 'music'
           li: a(href="/admin/music/programme/list" target="_blank") 热门榜单列表页
+          li: a(href="/admin/user/list" target="_blank") 用户列表页
+        if logo == 'recipes'
+          li: a(href="/admin/user/list" target="_blank") 用户列表页
+        if logo == 'threeMeals'
+          li: a(href="/admin/user/list" target="_blank") 用户列表页
+        if logo == 'relax'
+          li: a(href="/admin/user/list" target="_blank") 用户列表页
+        if logo == 'foodIntro'
+          li: a(href="/admin/user/list" target="_blank") 用户列表页
+        if logo == 'healthyNews'
+          li: a(href="/admin/user/list" target="_blank") 用户列表页
+        if logo == 'personal'
           li: a(href="/admin/user/list" target="_blank") 用户列表页
 
         

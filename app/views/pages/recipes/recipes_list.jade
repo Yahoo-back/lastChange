@@ -1,0 +1,44 @@
+//- 菜谱列表页
+extends ../../includes/layout
+
+block content
+  .container
+    .row
+      table.table.table-hover.table-bordered
+        thead
+          tr
+            th 菜名
+            th 作者
+            th 类别
+            th 食材
+            th 调料
+            th 制作时间
+            th 录入时间
+            th 查看
+            th 修改
+            th 删除
+        tbody
+          each 
+            tr
+              td a
+              td a
+              td a
+              td a
+              td a
+              td a
+              td a
+              td: a(target="_blank") 查看
+              td: a(target="_blank") 修改
+              td
+                button.btn.btn-danger(type="button") 删除
+            tr
+              td a
+              td a
+              td a
+              td a
+              td a
+              td: a(target="_blank") 查看
+              td: a(target="_blank") 修改
+              td
+                button.btn.btn-danger(type="button") 删除
+

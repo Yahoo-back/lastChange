@@ -3,10 +3,10 @@
 /* 与首页进行交互 */
 var mongoose = require('mongoose');
 
-/* 菜谱首页控制器 */
+/* 美食专栏控制器 */
 exports.index = function(req, res) {
-  res.render('recipes/recipes_index', {
-    title: '菜谱首页',
-    logo: 'recipes'
+  res.render('foodIntro/foodIntro_index', {
+    title: '美食专栏',
+    logo: 'foodIntro'
   });
 };

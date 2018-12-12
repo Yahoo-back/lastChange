@@ -1,0 +1,42 @@
+//- 菜谱后台录入页
+extends ../../includes/layout
+
+block content
+  .container
+    .row
+      form.form-horizontal(method="post" action="/admin/recipes/new" enctype="multipart/form-data")
+        .form-group
+          label.col-sm-3.control-label 菜谱名称
+          .col-sm-5
+            input.form-control(type="text")
+        .form-group
+          label.col-sm-3.control-label 作者
+          .col-sm-5
+            input.form-control(type="text" )
+        .form-group
+          label.col-sm-3.control-label 分类选择
+          .col-sm-6(style="height:100px; overflow:auto;")
+        .form-group
+          label.col-sm-3.control-label 成品图
+          .col-sm-5
+            input(type="file")
+        .form-group
+          label.col-sm-3.control-label 食材
+          .col-sm-5
+            input.form-control(type="text")
+        .form-group
+          label.col-sm-3.control-label 调料及用量
+          .col-sm-5
+            input.form-control(type="text" placeholder="如：盐：3克")
+        .form-group
+          label.col-sm-3.control-label 花费的时间
+          .col-sm-5
+            input.form-control(type="text" )
+        .form-group
+          label.col-sm-3.control-label 做法
+          .col-sm-5
+            textarea.form-control(type="text" placeholder="如：第一步：倒油；第二步： 放入食材")
+   .form-group
+          .col-sm-offset-3.col-sm-5
+            button.btn.btn-default(type="submit") 录入
+  script(src='/libs/scripts/js/movie/movie_admin.min.js')
