@@ -1,12 +1,12 @@
-"use strict";
+'use strict';
 
 var mongoose = require('mongoose'),
-    Schema = mongoose.Schema,
-    ObjectId = Schema.Types.ObjectId;
+  Schema = mongoose.Schema,
+  ObjectId = Schema.Types.ObjectId;
 
 var CategorySchema = new Schema({
   name: String,
-  movies: [{type: ObjectId, ref: 'Movie'}],
+  movies: [{ type: ObjectId, ref: 'Movie' }],
   meta: {
     createAt: {
       type: Date,
@@ -22,8 +22,7 @@ var CategorySchema = new Schema({
 CategorySchema.pre('save', function(next) {
   if (this.isNew) {
     this.meta.createAt = this.meta.updateAt = Date.now();
-  }
-  else {
+  } else {
     this.meta.updateAt = Date.now();
   }
 
@@ -32,15 +31,12 @@ CategorySchema.pre('save', function(next) {
 
 CategorySchema.statics = {
   fetch: function(cb) {
-    return this
-      .find({})
+    return this.find({})
       .sort('meta.updateAt')
       .exec(cb);
   },
   findById: function(id, cb) {
-    return this
-      .findOne({_id: id})
-      .exec(cb);
+    return this.findOne({ _id: id }).exec(cb);
   }
 };
 
