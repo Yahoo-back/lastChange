@@ -11,4 +11,10 @@ exports.new = function(req, res) {
     title: '菜谱分类录入页',
     logo: 'recipes'
   });
+}; // 电影分类控制器
+exports.list = function(req, res) {
+  res.render('recipes/recipes_category_list', {
+    title: '菜谱分类列表页',
+    logo: 'recipes'
+  });
 };

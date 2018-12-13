@@ -190,6 +190,9 @@ module.exports = function(app) {
   // 菜谱分类录入路由
   app.route('/admin/recipes/recipesCategory/new').get(User.signinRequired, User.adminRequired, RecipesCategory.new);
 
+  // 菜谱列表路由
+  app.route('/admin/recipes/recipesCategory/list').get(User.signinRequired, User.adminRequired, RecipesCategory.list);
+
   /* 一日三餐 */
   app.get('/threeMeals', ThreeMealsIndex.index);
   /* 休闲时光 */
